@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}Search Results | TripEase{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Available Options</h2>
+
+  {% if date %}
+<div class="d-flex justify-content-center gap-3 mb-4">
+  {% if prev_date %}
+  <a href="?type={{ travel_type }}&source={{ source }}&destination={{ destination }}&date={{ prev_date }}" 
+     class="btn btn-warning rounded-pill px-4">← Previous Day</a>
+  {% endif %}
+  
+  <span class="fw-bold align-self-center">{{ date }}</span>
+  
+  {% if next_date %}
+  <a href="?type={{ travel_type }}&source={{ source }}&destination={{ destination }}&date={{ next_date }}" 
+     class="btn btn-warning rounded-pill px-4">Next Day →</a>
+  {% endif %}
+</div>
+{% endif %}
+
+  {% if results %}
+    <div class="list-group">
+      {% for option in results %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{{ option.type }}</strong>  
+            {{ option.source }} → {{ option.destination }}  
+            ({{ option.date_time|date:"M d, Y H:i" }})  
+            Seats left: {{ option.available_seats }}
+          </div>
+          <div>
+            <span class="fw-bold">${{ option.price }}</span>
+            <a href="{% url 'bookings:book_travel' option.id %}" class="btn btn-sm btn-primary">Book</a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No results found. Try changing your search.</p>
+  {% endif %}
+</div>
+{% endblock %}

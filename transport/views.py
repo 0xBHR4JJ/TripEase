@@ -91,3 +91,32 @@ def bus_delete(request, pk):
         bus.delete()
         return redirect("transport:bus_list")
     return render(request, "transport/bus_confirm_delete.html", {"bus": bus})
+
+@login_required(login_url="merchant:login")
+# @merchant_required
+def dashboard_view(request):
+    merchant = request.user.merchantprofile
+
+    # Key metrics
+    bus_count = Bus.objects.filter(merchant=merchant).count()
+    option_qs = TravelOption.objects.filter(merchant=merchant)
+    option_count = option_qs.count()
+
+    # If your Booking model references transport.TravelOption, this works:
+    booking_qs = Booking.objects.filter(travel_option__merchant=merchant)
+    booking_count = booking_qs.count()
+
+    # Recents
+    recent_buses = Bus.objects.filter(merchant=merchant).order_by("-id")[:5]
+    recent_options = option_qs.select_related("bus").order_by("-id")[:8]
+    recent_bookings = booking_qs.select_related("travel_option", "user").order_by("-id")[:8]
+
+    context = {
+        "bus_count": bus_count,
+        "option_count": option_count,
+        "booking_count": booking_count,
+        "recent_buses": recent_buses,
+        "recent_options": recent_options,
+        "recent_bookings": recent_bookings,
+    }
+    return render(request, "merchant_dashboard.html", context)

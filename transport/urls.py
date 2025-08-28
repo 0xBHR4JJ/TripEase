@@ -15,4 +15,7 @@ urlpatterns = [
     path("buses/add/", views.bus_add, name="bus_add"),
     path("buses/edit/<int:pk>/", views.bus_edit, name="bus_edit"),
     path("buses/delete/<int:pk>/", views.bus_delete, name="bus_delete"),
+
+    path("dashboard/", views.dashboard_view, name="dashboard"),
+
 ]

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}My Bookings | TripEase{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">My Bookings</h2>
+
+  {% if bookings %}
+    <div class="list-group mb-4">
+      {% for booking in bookings %}
+        <div class="list-group-item d-flex justify-content-between align-items-center">
+          <div>
+            <strong>{{ booking.travel_option.type }}</strong>  
+            {{ booking.travel_option.source }} → {{ booking.travel_option.destination }}  
+            ({{ booking.travel_option.date_time|date:"M d, Y H:i" }})<br>
+
+            Seats: {{ booking.seats }} |  
+            Price per seat: ${{ booking.travel_option.price }} |  
+            Status: 
+            {% if booking.status == "Confirmed" %}
+              <span class="badge bg-success">Confirmed</span>
+            {% else %}
+              <span class="badge bg-danger">Cancelled</span>
+            {% endif %}
+          </div>
+
+          {% if booking.status == "Confirmed" %}
+            <form method="post" action="{% url 'bookings:cancel_booking' booking.id %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-sm btn-outline-danger">
+                Cancel
+              </button>
+            </form>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Summary Section -->
+    <div class="card p-3 shadow-sm">
+      <h5 class="fw-bold">Booking Summary</h5>
+      <p>Total Seats: {{ total_seats }}</p>
+      <p>Total Price: ${{ total_price }}</p>
+    </div>
+  {% else %}
+    <p>You have no bookings yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
