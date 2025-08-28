@@ -1,0 +1,119 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    background: #E53935; /* Brand Red */
+    padding: 0.8rem 1rem;
+}
+.navbar .nav-link,
+.navbar-brand {
+    color: white !important;
+    font-weight: 500;
+}
+.navbar .nav-link:hover {
+    color: #FFD700 !important; /* Gold hover */
+}
+.navbar .btn {
+    background: #FFD700;
+    color: #000;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 0.4rem 1rem;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 90vh;
+    background: url("../images/hero_travel.jpg") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+.hero-content {
+    position: relative;
+    color: white;
+    z-index: 2;
+    animation: fadeInUp 1.2s ease;
+}
+.hero h1 {
+    font-weight: 800;
+    font-size: 3.2rem;
+}
+.hero p {
+    font-size: 1.2rem;
+}
+.btn-cta {
+    background: #FFD700;
+    color: #000;
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+}
+.btn-cta:hover {
+    background: #FFB703;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 16px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+.card i {
+    font-size: 2.5rem;
+    color: #E53935;
+}
+
+/* Offers */
+.offers {
+    background: linear-gradient(90deg, #E53935, #FF5722);
+    color: white;
+    padding: 3rem 1rem;
+    border-radius: 20px;
+    text-align: center;
+    margin: 3rem 0;
+}
+.offers h2 {
+    font-weight: 700;
+}
+
+/* Footer */
+footer {
+    background: #0D1B2A;
+    color: #f1faee;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+footer a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

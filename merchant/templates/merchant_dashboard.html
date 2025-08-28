@@ -1,0 +1,161 @@
+{% extends "merchant_base.html" %}
+{% block title %}Merchant Dashboard{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+
+  <h2 class="mb-4">Dashboard</h2>
+
+  <!-- KPI Cards -->
+  <div class="row g-3 mb-4">
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="text-muted mb-1">Buses</h6>
+          <h3 class="mb-0">{{ bus_count }}</h3>
+          <a href="{% url 'transport:bus_list' %}" class="btn btn-link p-0 mt-2">Manage buses →</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="text-muted mb-1">Travel Options</h6>
+          <h3 class="mb-0">{{ option_count }}</h3>
+          <a href="{% url 'transport:traveloption_list' %}" class="btn btn-link p-0 mt-2">Manage options →</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h6 class="text-muted mb-1">Bookings</h6>
+          <h3 class="mb-0">{{ booking_count }}</h3>
+          <a href="#" class="btn btn-link p-0 mt-2 disabled" aria-disabled="true">Bookings center (coming soon)</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Travel Options -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Recent Travel Options</h5>
+        <a href="{% url 'transport:traveloption_add' %}" class="btn btn-sm btn-success">Add new</a>
+      </div>
+      <div class="table-responsive mt-3">
+        <table class="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>Type</th>
+              <th>Ref</th>
+              <th>Route</th>
+              <th>Date & Time</th>
+              <th>Price</th>
+              <th>Seats</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for o in recent_options %}
+            <tr>
+              <td>{{ o.type }}</td>
+              <td>
+                {% if o.type == "Bus" and o.bus %}{{ o.bus.bus_number }}
+                {% elif o.type == "Flight" %}{{ o.flight_number|default:"–" }}
+                {% elif o.type == "Train" %}{{ o.train_number|default:"–" }}
+                {% endif %}
+              </td>
+              <td>{{ o.source }} → {{ o.destination }}</td>
+              <td>{{ o.date_time }}</td>
+              <td>{{ o.price }}</td>
+              <td>{{ o.available_seats }}</td>
+              <td class="text-end">
+                <a href="{% url 'transport:traveloption_edit' o.pk %}" class="btn btn-sm btn-primary">Edit</a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="7" class="text-muted">No travel options yet.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Buses -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <div class="d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Recent Buses</h5>
+        <a href="{% url 'transport:bus_add' %}" class="btn btn-sm btn-success">Add bus</a>
+      </div>
+      <div class="table-responsive mt-3">
+        <table class="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>Bus #</th>
+              <th>Model</th>
+              <th>Total Seats</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for b in recent_buses %}
+            <tr>
+              <td>{{ b.bus_number }}</td>
+              <td>{{ b.model_name|default:"–" }}</td>
+              <td>{{ b.total_seats }}</td>
+              <td class="text-end">
+                <a href="{% url 'transport:bus_edit' b.pk %}" class="btn btn-sm btn-primary">Edit</a>
+              </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4" class="text-muted">No buses yet.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Bookings (optional, if FK aligned) -->
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h5 class="mb-0">Recent Bookings</h5>
+      <div class="table-responsive mt-3">
+        <table class="table table-striped align-middle">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Customer</th>
+              <th>Travel Option</th>
+              <th>Seats</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Booked At</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for bk in recent_bookings %}
+            <tr>
+              <td>#{{ bk.id }}</td>
+              <td>{{ bk.user.username }}</td>
+              <td>{{ bk.travel_option }}</td>
+              <td>{{ bk.seats }}</td>
+              <td>{{ bk.total_price }}</td>
+              <td>{{ bk.status }}</td>
+              <td>{{ bk.booking_date }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="7" class="text-muted">No bookings yet.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}

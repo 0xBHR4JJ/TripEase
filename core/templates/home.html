@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+
+{% block title %}Home | TripEase{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero d-flex align-items-center text-center text-white">
+  <div class="container">
+    <div class="hero-content">
+      <h1 class="fw-bold display-5">Explore. Book. Travel Smart.</h1>
+      <p class="lead">Your gateway to flights, trains, and buses at unbeatable prices</p>
+    </div>
+  </div>
+</section>
+
+<!-- Booking Widget -->
+<div class="container">
+  <div class="booking-widget shadow-lg p-4 rounded-4 bg-white mx-auto"
+       style="margin-top:-60px; position: relative; z-index: 10; max-width: 1000px;">
+    <form method="get" action="#" class="row g-3 align-items-end">
+      
+      <!-- Trip Type -->
+      <div class="col-md-2">
+        <label class="form-label fw-semibold">Trip</label>
+        <select class="form-select" id="tripType" name="trip_type">
+          <option value="oneway">One-way</option>
+          <option value="round">Round-trip</option>
+        </select>
+      </div>
+
+      <!-- Travel Type -->
+      <div class="col-md-2">
+        <label class="form-label fw-semibold">Mode</label>
+        <select class="form-select" name="type">
+          <option value="Flight">✈️ Flight</option>
+          <option value="Train">🚆 Train</option>
+          <option value="Bus">🚌 Bus</option>
+        </select>
+      </div>
+
+      <!-- From -->
+      <div class="col-md-2">
+        <label class="form-label fw-semibold">From</label>
+        <input type="text" name="source" class="form-control" placeholder="Enter source">
+      </div>
+
+      <!-- To -->
+      <div class="col-md-2">
+        <label class="form-label fw-semibold">To</label>
+        <input type="text" name="destination" class="form-control" placeholder="Enter destination">
+      </div>
+
+      <!-- Departure Date -->
+      <div class="col-md-2">
+        <label class="form-label fw-semibold">Departure</label>
+        <input type="date" name="date" class="form-control">
+      </div>
+
+      <!-- Return Date (hidden initially) -->
+      <div class="col-md-2" id="returnDateField" style="display: none;">
+        <label class="form-label fw-semibold">Return</label>
+        <input type="date" name="return_date" class="form-control">
+      </div>
+
+      <!-- Submit -->
+      <div class="col-md-2 text-center">
+        <button type="submit" class="btn btn-cta w-100 py-2">
+          🔍 Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="container py-5">
+  <h2 class="text-center fw-bold mb-4">Why Choose TripEase?</h2>
+  <div class="row g-4">
+    <div class="col-md-4">
+      <div class="card text-center p-4 h-100 border-0 shadow-sm">
+        <i class="bi bi-airplane-fill display-6 text-primary"></i>
+        <h5 class="mt-3 fw-bold">All-in-One Platform</h5>
+        <p>Flights, trains, and buses under one roof – seamless booking at your fingertips.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center p-4 h-100 border-0 shadow-sm">
+        <i class="bi bi-cash-coin display-6 text-success"></i>
+        <h5 class="mt-3 fw-bold">Exclusive Offers</h5>
+        <p>Save more with special discounts, deals, and seasonal promotions.</p>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center p-4 h-100 border-0 shadow-sm">
+        <i class="bi bi-shield-check display-6 text-warning"></i>
+        <h5 class="mt-3 fw-bold">Trusted & Secure</h5>
+        <p>Safe payments, instant confirmations, and 24/7 customer support.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Script to toggle Return Date -->
+<script>
+  const tripType = document.getElementById("tripType");
+  const returnDateField = document.getElementById("returnDateField");
+
+  tripType.addEventListener("change", function () {
+    if (this.value === "round") {
+      returnDateField.style.display = "block";
+    } else {
+      returnDateField.style.display = "none";
+    }
+  });
+</script>
+{% endblock %}

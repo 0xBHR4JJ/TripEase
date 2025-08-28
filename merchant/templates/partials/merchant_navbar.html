@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'merchant:home' %}">TripEase Merchant</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                {% if user.is_authenticated and user.role == "merchant" %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'merchant:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'merchant:logout' %}">Logout</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'merchant:dashboard' %}">Dashboard</a>
+                </li>
+
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'merchant:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'merchant:signup' %}">Sign Up</a>
+                </li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>
