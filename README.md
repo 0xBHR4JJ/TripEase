@@ -23,19 +23,6 @@ TripEase is a Django-based travel booking application that allows users to view 
 
 ---
 
-## Project Structure
-
-TripEase/
-├── TripEase/ # Project settings
-├── core/ # User app
-├── merchant/ # Merchant app
-├── templates/ # HTML templates
-├── static/ # CSS, JS, images
-└── manage.py
-
-
----
-
 ## Setup Instructions
 
 1. **Clone the repository**
@@ -84,7 +71,7 @@ Always run collectstatic after changing CSS or JS
 Ensure migrations are applied after updating models
 
 Merchant dashboard adds extended functionality beyond the core assignment
-
+\n
 **Author**
-```0XBHR4JJ```
+```0XBHR4JJ``` \n
 Deployed URL: https://xbhi12.pythonanywhere.com
