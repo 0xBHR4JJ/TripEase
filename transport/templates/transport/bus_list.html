@@ -1,0 +1,35 @@
+{% extends "merchant_base.html" %}
+{% block title %}My Buses{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>My Buses</h2>
+    <a href="{% url 'transport:bus_add' %}" class="btn btn-success mb-3">Add New Bus</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Bus Number</th>
+                <th>Seats</th>
+                <th>Model</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bus in buses %}
+            <tr>
+                <td>{{ bus.bus_number }}</td>
+                <td>{{ bus.total_seats }}</td>
+                <td>{{ bus.model_name|default:"-" }}</td>
+                <td>
+                    <a href="{% url 'transport:bus_edit' bus.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'transport:bus_delete' bus.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="4">No buses added yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

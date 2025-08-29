@@ -1,0 +1,50 @@
+{% extends "merchant_base.html" %}
+{% block title %}My Travel Options{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>My Travel Options</h2>
+    <a href="{% url 'transport:traveloption_add' %}" class="btn btn-success mb-3">Add New Travel Option</a>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Bus/Flight/Train</th>
+                <th>Source</th>
+                <th>Destination</th>
+                <th>Date & Time</th>
+                <th>Price</th>
+                <th>Seats</th>
+                <th>Repeat Days</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for option in options %}
+            <tr>
+                <td>{{ option.type }}</td>
+                <td>
+                    {% if option.type == "Bus" %}{{ option.bus.bus_number }}
+                    {% elif option.type == "Flight" %}{{ option.flight_number }}
+                    {% elif option.type == "Train" %}{{ option.train_number }}
+                    {% endif %}
+                </td>
+                <td>{{ option.source }}</td>
+                <td>{{ option.destination }}</td>
+                <td>{{ option.date_time }}</td>
+                <td>{{ option.price }}</td>
+                <td>{{ option.available_seats }}</td>
+                <td>{{ option.repeat_days|default:"-" }}</td>
+                <td>
+                    <a href="{% url 'transport:traveloption_edit' option.pk %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'transport:traveloption_delete' option.pk %}" class="btn btn-danger btn-sm">Delete</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="9">No travel options added yet.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

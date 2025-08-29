@@ -1,0 +1,14 @@
+{% extends "merchant_base.html" %}
+{% block title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Bus{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Bus</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success mt-2">Save</button>
+        <a href="{% url 'transport:bus_list' %}" class="btn btn-secondary mt-2">Cancel</a>
+    </form>
+</div>
+{% endblock %}

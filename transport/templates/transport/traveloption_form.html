@@ -1,0 +1,32 @@
+{% extends "merchant_base.html" %}
+{% block title %}{% if form.instance.pk %}Edit{% else %}Add{% endif %} Travel Option{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2>{% if form.instance.pk %}Edit{% else %}Add{% endif %} Travel Option</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success mt-2">Save</button>
+        <a href="{% url 'transport:traveloption_list' %}" class="btn btn-secondary mt-2">Cancel</a>
+    </form>
+</div>
+
+<script>
+    // Optional: dynamically show/hide fields based on type
+    const typeField = document.getElementById("id_type");
+    const busRow = document.querySelector("label[for='id_bus']").parentNode;
+    const flightRows = ["id_flight_number","id_airline","id_duration_minutes"].map(id => document.getElementById(id).parentNode);
+    const trainRows = ["id_train_number","id_coach_type"].map(id => document.getElementById(id).parentNode);
+
+    function updateFields() {
+        const value = typeField.value;
+        busRow.style.display = value === "Bus" ? "" : "none";
+        flightRows.forEach(r => r.style.display = value === "Flight" ? "" : "none");
+        trainRows.forEach(r => r.style.display = value === "Train" ? "" : "none");
+    }
+
+    typeField.addEventListener("change", updateFields);
+    updateFields();
+</script>
+{% endblock %}

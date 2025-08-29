@@ -1,0 +1,79 @@
+{% extends "merchant_base.html" %}
+{% block title %}Merchant Dashboard | TripEase{% endblock %}
+
+{% block content %}
+<div class="container py-5"></div>
+<div class="text-center mb-5">
+  {% if user.is_authenticated %}
+    <h1 class="display-5 fw-bold">Welcome back, {{ user.full_name }}!</h1>
+    <p class="text-muted">Manage your fleet, track bookings, and grow your business with TripEase.</p>
+  {% else %}
+    <h1 class="display-5 fw-bold">Welcome to TripEase!</h1>
+    <p class="text-muted">Please log in to manage your fleet, track bookings, and grow your business.</p>
+  {% endif %}
+</div>
+</div>
+
+
+  <!-- Dashboard Actions -->
+  <div class="row g-4">
+    <!-- Manage Buses -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 border-0">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">🚌 My Buses</h5>
+          <p class="card-text text-muted">Add and manage your buses easily.</p>
+          <a href="{% url 'transport:bus_list' %}" class="btn btn-primary w-100">View Buses</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Travel Options -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 border-0">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">📅 Travel Options</h5>
+          <p class="card-text text-muted">Schedule trips, set prices, and manage availability.</p>
+          <a href="{% url 'transport:traveloption_list' %}" class="btn btn-secondary w-100">Manage Travel Options</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bookings -->
+    <div class="col-md-4">
+      <div class="card shadow-sm h-100 border-0">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">📖 Bookings</h5>
+          <p class="card-text text-muted">Track all customer bookings and cancellations.</p>
+          <a href="#" class="btn btn-success w-100">View Bookings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Extra Options -->
+  <div class="row g-4 mt-4">
+    <!-- Profile -->
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100 border-0">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">👤 My Profile</h5>
+          <p class="card-text text-muted">Update your business and contact details anytime.</p>
+          <a href="#" class="btn btn-outline-primary w-100">Edit Profile</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Earnings -->
+    <div class="col-md-6">
+      <div class="card shadow-sm h-100 border-0">
+        <div class="card-body text-center">
+          <h5 class="card-title mb-3">💰 Earnings</h5>
+          <p class="card-text text-muted">Track your payouts, commissions, and revenue.</p>
+          <a href="#" class="btn btn-outline-success w-100">View Earnings</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

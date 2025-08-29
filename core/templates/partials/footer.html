@@ -1,0 +1,19 @@
+
+
+<footer class="footer mt-auto py-4">
+  <div class="container text-center text-white">
+    <!-- Logo / Brand -->
+    <h5 class="fw-bold mb-2">🚍 TripEase</h5>
+
+    <!-- Links -->
+    <div class="mb-2">
+      <a href="{% url 'core:home' %}" class="footer-link">Home</a> |
+      <a href="#" class="footer-link">About Us</a> |
+      <a href="#" class="footer-link">Contact</a> |
+      <a href="#" class="footer-link">Terms & Privacy</a>
+    </div>
+
+    <!-- Copyright -->
+    <small>© {{ now|date:"Y" }} TripEase. All rights reserved.</small>
+  </div>
+</footer>

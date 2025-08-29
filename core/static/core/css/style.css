@@ -1,0 +1,236 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    background: #E53935; /* Brand Red */
+    padding: 0.8rem 1rem;
+}
+.navbar .nav-link,
+.navbar-brand {
+    color: white !important;
+    font-weight: 500;
+}
+.navbar .nav-link:hover {
+    color: #FFD700 !important; /* Gold hover */
+}
+.navbar .btn {
+    background: #FFD700;
+    color: #000;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 0.4rem 1rem;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 90vh;
+    background: url("../images/back_doodles.png") no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+}
+.hero-content {
+    position: relative;
+    color: white;
+    z-index: 2;
+    animation: fadeInUp 1.2s ease;
+}
+.hero h1 {
+    font-weight: 800;
+    font-size: 3.2rem;
+}
+.hero p {
+    font-size: 1.2rem;
+}
+.btn-cta {
+    background: #FFD700;
+    color: #000;
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 0.8rem 2rem;
+}
+.btn-cta:hover {
+    background: #FFB703;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 16px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+.card i {
+    font-size: 2.5rem;
+    color: #E53935;
+}
+
+/* Offers */
+.offers {
+    background: linear-gradient(90deg, #E53935, #FF5722);
+    color: white;
+    padding: 3rem 1rem;
+    border-radius: 20px;
+    text-align: center;
+    margin: 3rem 0;
+}
+.offers h2 {
+    font-weight: 700;
+}
+
+/* Footer */
+footer {
+    background: #0D1B2A;
+    color: #f1faee;
+    padding: 2rem 0;
+    margin-top: 4rem;
+}
+footer a {
+    color: #FFD700;
+    text-decoration: none;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+
+
+/* Big redbus-style yellow block */
+.btn-search {
+  background-color: #FFD700;      /* Yellow */
+  color: #000;                   /* Black text */
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0 0.75rem 0.75rem 0; /* Only right side curved */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease-in-out;
+}
+
+.btn-search:hover {
+  background-color: #e6c200;
+}
+
+.btn-search:active {
+  background-color: #ccac00;
+}
+
+body {
+    padding-top: 70px; 
+}
+
+
+
+/* Global font */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #333; /* softer than pure black */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Navbar brand (TripEase) */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+/* Navbar background stays red */
+.navbar {
+    background-color: #e63946 !important; /* red */
+}
+
+/* Navbar links */
+.navbar .nav-link {
+    color: #fff !important;
+    margin: 0 8px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    color: #ffdd00 !important; /* yellow hover */
+    text-decoration: underline;
+}
+
+/* Navbar buttons */
+.navbar .btn {
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+
+
+/* Footer */
+.footer {
+    background-color: #e63946; /* same red as navbar */
+    color: #fff;
+    border-top: 4px solid #ffdd00; /* yellow accent */
+}
+
+.footer .footer-link {
+    color: #ffdd00;
+    text-decoration: none;
+    margin: 0 6px;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer .footer-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}

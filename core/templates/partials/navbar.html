@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'core:home' %}">TripEase</a>
+        <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" 
+                data-bs-target="#navbarNav" aria-controls="navbarNav" 
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+                <!-- <li class="nav-item"><a class="nav-link" href="#">Travel Options</a></li> -->
+                <li class="nav-item"><a class="nav-link" href="{% url 'bookings:my_bookings' %}">My Bookings</a></li>
+
+                {% if user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="#">Welcome, {{ user.username }}</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-danger" href="{% url 'accounts:logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}">Login</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}">Sign up</a></li>
+                    <!-- <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="{% url 'accounts:signup' %}">Sign Up</a>
+                    </li> -->
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary" href="{% url 'merchant:home' %}">Become a Partner</a>
+                    </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}Sign Up | TripEase{% endblock %}
+
+{% block content %}
+<div class="container py-5 d-flex justify-content-center">
+  <div class="card shadow-lg p-4 rounded-4" style="max-width: 500px; width: 100%;">
+    <h2 class="text-center mb-4 fw-bold">Create Your TripEase Account</h2>
+
+    <form method="post">
+      {% csrf_token %}
+
+      <!-- Username -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Username</label>
+        <input type="text" name="username" class="form-control" placeholder="Choose a username"
+               value="{{ form.username.value|default_if_none:'' }}">
+        {% for error in form.username.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- Full Name -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Full Name</label>
+        <input type="text" name="full_name" class="form-control" placeholder="Enter your full name"
+               value="{{ form.full_name.value|default_if_none:'' }}">
+        {% for error in form.full_name.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Email</label>
+        <input type="email" name="email" class="form-control" placeholder="name@example.com"
+               value="{{ form.email.value|default_if_none:'' }}">
+        {% for error in form.email.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- Phone -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Phone Number</label>
+        <input type="text" name="phone_number" class="form-control" placeholder="+1 555 123 4567"
+               value="{{ form.phone_number.value|default_if_none:'' }}">
+        {% for error in form.phone_number.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- DOB -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Date of Birth</label>
+        <input type="date" name="date_of_birth" class="form-control"
+               value="{{ form.date_of_birth.value|default_if_none:'' }}">
+        {% for error in form.date_of_birth.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Password</label>
+        <input type="password" name="password1" class="form-control" placeholder="Enter a strong password">
+        {% for error in form.password1.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Confirm Password</label>
+        <input type="password" name="password2" class="form-control" placeholder="Re-enter your password">
+        {% for error in form.password2.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+
+      <!-- Submit -->
+      <div class="d-grid">
+        <button type="submit" class="btn btn-success fw-bold">Sign Up</button>
+      </div>
+    </form>
+
+    <p class="text-center mt-3">
+      Already have an account? <a href="{% url 'accounts:login' %}">Login</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

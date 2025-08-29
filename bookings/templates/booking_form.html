@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Book Travel | TripEase{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Book {{ travel.type }} from {{ travel.source }} to {{ travel.destination }}</h2>
+  
+  <p>
+    Departure: {{ travel.date_time|date:"M d, Y H:i" }} <br>
+    Price per seat: ${{ travel.price }} <br>
+    Available seats: {{ travel.available_seats }}
+  </p>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="seats" class="form-label">Number of Seats</label>
+      <input type="number" name="seats" id="seats" min="1" max="{{ travel.available_seats }}" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Confirm Booking</button>
+    <a href="{% url 'bookings:search_results' %}" class="btn btn-secondary">Back</a>
+  </form>
+</div>
+{% endblock %}
