@@ -10,14 +10,14 @@
 <div class="d-flex justify-content-center gap-3 mb-4">
   {% if prev_date %}
   <a href="?type={{ travel_type }}&source={{ source }}&destination={{ destination }}&date={{ prev_date }}" 
-     class="btn btn-warning rounded-pill px-4">← Previous Day</a>
+     class="btn btn-warning rounded-pill px-4">←</a>
   {% endif %}
   
   <span class="fw-bold align-self-center">{{ date }}</span>
   
   {% if next_date %}
   <a href="?type={{ travel_type }}&source={{ source }}&destination={{ destination }}&date={{ next_date }}" 
-     class="btn btn-warning rounded-pill px-4">Next Day →</a>
+     class="btn btn-warning rounded-pill px-4">→</a>
   {% endif %}
 </div>
 {% endif %}

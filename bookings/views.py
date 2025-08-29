@@ -22,7 +22,7 @@ def book_travel(request, travel_id):
             return redirect("bookings:my_bookings")
     return render(request, "booking_form.html", {"travel": travel})
 
-@login_required
+@login_required(login_url="accounts:login")
 def my_bookings(request):
     bookings = Booking.objects.filter(user=request.user)
 

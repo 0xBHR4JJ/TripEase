@@ -29,7 +29,7 @@ body {
 .hero {
     position: relative;
     height: 90vh;
-    background: url("../images/hero_travel.jpg") no-repeat center center/cover;
+    background: url("../images/back_doodles.png") no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -143,4 +143,94 @@ footer a {
 
 .btn-search:active {
   background-color: #ccac00;
+}
+
+body {
+    padding-top: 70px; 
+}
+
+
+
+/* Global font */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+    color: #333; /* softer than pure black */
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Navbar brand (TripEase) */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+
+
+
+/* Navbar background stays red */
+.navbar {
+    background-color: #e63946 !important; /* red */
+}
+
+/* Navbar links */
+.navbar .nav-link {
+    color: #fff !important;
+    margin: 0 8px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar .nav-link:hover {
+    color: #ffdd00 !important; /* yellow hover */
+    text-decoration: underline;
+}
+
+/* Navbar buttons */
+.navbar .btn {
+    border-radius: 30px;
+    padding: 6px 16px;
+    font-weight: 500;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+
+
+
+/* Footer */
+.footer {
+    background-color: #e63946; /* same red as navbar */
+    color: #fff;
+    border-top: 4px solid #ffdd00; /* yellow accent */
+}
+
+.footer .footer-link {
+    color: #ffdd00;
+    text-decoration: none;
+    margin: 0 6px;
+    font-weight: 500;
+    transition: color 0.2s ease-in-out;
+}
+
+.footer .footer-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.footer h5 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.5px;
 }
