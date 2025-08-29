@@ -70,8 +70,8 @@ Always run collectstatic after changing CSS or JS
 
 Ensure migrations are applied after updating models
 
-Merchant dashboard adds extended functionality beyond the core assignment
-\n
+Merchant dashboard adds extended functionality beyond the core assignment <br>
+
 **Author**
-```0XBHR4JJ``` \n
+```0XBHR4JJ``` <br>
 Deployed URL: https://xbhi12.pythonanywhere.com
